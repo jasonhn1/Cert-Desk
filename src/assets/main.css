@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+
+/*font-family: 'Comfortaa', sans-serif !important;*/
+html {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+h1{
+  font-family: 'Secular One', sans-serif;
+  font-weight: 800;
+  font-size:50px;
+  z-index: 10;
+}
+
+h2{ 
+  font-family: 'Secular One', sans-serif;
+
+}
+
+
+p {
+  margin-top: -20px;
+  font-family: 'Comfortaa', sans-serif !important;
+  color: rgb(120, 120, 120);
+}
+
+li {
+  font-family: 'Comfortaa', sans-serif !important;
+  color: black;
+  list-style-type: none;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: #fff none repeat scroll;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .05em;
+  position: relative;
+  overflow-y: scroll;
+}
+.cert-logo{
+  position: absolute;
+  font-family: 'Archivo Black';
+  font-size: 30px;
+  z-index: 2;
+  margin-top: 35px;
+  margin-left: 40px;
+  color: black;
+}
+header {
+  display: block;
+}
+
+.center {
+  align-items: center;
+  text-align:center;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.wrapper {
+  height: 100vh;
+}
+
+.fixed {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 69;
+}
