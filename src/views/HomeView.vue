@@ -37,11 +37,11 @@ export default defineComponent({
           <div class="wrapper p-relative overall-content">
             
             <div class="content text-cert">
-              <h1 class="context">Certitude is Seamless</h1>
-              <div class="rectangle"></div>
+              
+              <h1 class="context">Certitude is <span class="seam">Seamless</span> </h1>
               <p>
                 Our revolutionary education verification
-                platform is simple, instant, and secure
+                platform is <br/>simple, instant, and secure
               </p>
               <div class="buttons">
                 <!-- <el-button class="bgradient" type="warning" @click="dialogVisible = true" round>I am a recruiter</el-button>
@@ -50,18 +50,18 @@ export default defineComponent({
                 
                 <button class="student-btn">Student <el-icon><CircleCheckFilled /></el-icon></button>
                 <br/>
-                <button class="recruiter">Recruiter<el-icon id="manage"><Briefcase /></el-icon></button>
+                <button class="recruiter">Recruiter <el-icon><Avatar /></el-icon></button>
                 <br/>
 
                 <!-- <button class="student">I am a Student <el-icon><Notebook /></el-icon></button> -->
               </div>
             </div>
             
-
-              <el-card class="box-card center card-box">
+            <img class="worker" src="@/assets/workers.png"/>
+              <el-card class=" card-box">
                 <div class="card-horizontal">
-                <div class="text item">
-                  <el-icon :size="30" color="#ff7315" class="no-inherit">
+                <div class="text center item">
+                  <el-icon :size="30" color="#fcb531" class="icon-grad no-inherit">
                     <Pointer />
                   </el-icon>
                   <h2>One-Click Check</h2>
@@ -70,8 +70,8 @@ export default defineComponent({
                   </p>
                 </div>
                 <div class="vertical-bar"></div>
-                <div class="text item">
-                  <el-icon :size="30" color="#ff7315" class="no-inherit">
+                <div class="text center item">
+                  <el-icon :size="30" color="#fcb531" class="icon-grad">
                     <SetUp />
                   </el-icon>
                   <h2>Data Belongs to Students</h2>
@@ -161,10 +161,8 @@ export default defineComponent({
 .container {
   max-width: 1350px;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .headSplash {
@@ -178,12 +176,6 @@ export default defineComponent({
   overflow: hidden; */
 }
 
-#manage{
-  margin-bottom: 20px;
-  margin-left:-10px;
-  width: 50px;
-  height: 55px;
-}
 .recruiter{
   border: 3px;
   width: 160px;
@@ -193,12 +185,51 @@ export default defineComponent({
   color: black;
   border-radius: 5px;
   margin-top: 20px;
-  padding-left:15px;
-  padding-right:0;
-  background: linear-gradient(90deg, rgba(251,146,51,1) 0%, rgba(252,181,49,1) 40%, rgba(254,209,50,1) 100%);
-  box-shadow: 12px 12px 2px 1px rgb(0, 0, 0);
+  padding-top: 0px;
+  padding-left:9px;
+  padding-right:2px;
+  background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1)50%, rgba(254,209,50,1) 100%);
+  box-shadow: 10px 10px 0px 1px rgb(0, 0, 0);
+  border: 3px solid rgb(0, 0, 0);
+  transition: transform 250ms;
 }
 
+.recruiter:hover{
+  transform: translateX(10px);
+}
+.seam{
+  background: linear-gradient(81deg, rgba(255,106,0,1) 0%,  rgba(255,209,0,1) 20%,rgba(255,241,78,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 10px transparent;
+  padding-left: 3px;
+  padding-right:2px;
+  background-size: 400%;
+ 
+}
+.seam:hover{
+  animation: bg-animation 10s infinite alternate; 
+}
+
+/*
+  margin-left: 750px;
+  margin-top: -100px;
+*/
+.worker{
+  display: inline;
+  width:500px;
+  margin-top: -40px;
+  height: 200px;
+  margin-left: 300px;
+  z-index: 11;
+}
+
+.icon-grad{
+  background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1) 50%, rgba(254,209,50,1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .student-btn{
   border: 3px;
   width: 160px;
@@ -208,8 +239,14 @@ export default defineComponent({
   color: black;
   border-radius: 5px;
   margin-top: 20px;
-  background: linear-gradient(90deg, rgba(251,146,51,1) 0%, rgba(252,181,49,1) 40%, rgba(254,209,50,1) 100%);
-  box-shadow: 12px 12px 2px 1px rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1) 50%, rgba(254,209,50,1) 100%);
+  box-shadow: 10px 10px 0px 1px rgb(0, 0, 0);
+  border: 3px solid black;
+  transition: transform 250ms;
+}
+
+.student-btn:hover{
+  transform: translateX(10px);
 }
 .card-horizontal{
   display: flex;
@@ -225,15 +262,15 @@ export default defineComponent({
   animation: spin 20s linear infinite;
 }
 
-.rectangle{
-  position: absolute;
-  width: 260px;
-  height: 35px;
-  margin-top: -40px;
-  margin-left: 296px;
-  z-index: 0;
-  background: linear-gradient(90deg, rgba(251,146,51,1) 0%, rgba(252,181,49,1) 40%, rgba(254,209,50,1) 100%);
-  border-radius: 8px;
+
+
+@keyframes bg-animation {
+  0%{
+    background-position: left;
+  }
+  100%{
+    background-position: right;
+  }
 }
 
 
@@ -259,7 +296,7 @@ export default defineComponent({
 
 .vertical-bar{
   border-left: 3px solid rgb(61, 61, 61);
-  margin-top: 100px;
+  margin-top: 40px;
   margin-left: 20px;
   margin-right: 20px;
   height: 100px;
@@ -269,7 +306,7 @@ export default defineComponent({
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: start;
   width: 100%;
   margin-top: 200px;
 }
@@ -282,13 +319,16 @@ export default defineComponent({
 }
 
 .card-box{
-  height: 260px;
-  width: 1000px;
-  margin-top: 300px;
+  height: 200px;
+  width: 1200px;
+  margin-top: 150px;
+  margin-left: -300px;
+  margin-right: 100px;
   margin-bottom: 200px;
 }
 .text-cert{
-  margin-top: -400px;
-  margin-left: 100px;
+  margin-top: -300px;
+  margin-left: 80px;
+  margin-right:-200px;
 }
 </style>

@@ -90,11 +90,10 @@ export default defineComponent({
   position: absolute;
   width: 200px;
   height: 20px;
-  margin-top: 40px;
+  margin-top: 42px;
   margin-left: 35px;
   z-index: 0;
-  background: rgb(251,146,51);
-  background: linear-gradient(90deg, rgba(251,146,51,1) 0%, rgba(252,181,49,1) 40%, rgba(254,209,50,1) 100%);
+  background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1) 50%, rgba(254,209,50,1) 100%);
   z-index: 1;
   border-radius: 8px;
 }
@@ -102,12 +101,14 @@ export default defineComponent({
 .cert-logo{
   z-index: 2;
   margin-top: 20px;
+  font-family: 'Secular One';
+  font-weight: bold;
 }
 
 .bg {
   color: black !important;
   background-color: rgb(255, 255, 255) !important;
-  box-shadow: 0 0 10px rgb(224, 139, 11);
+  box-shadow: 0 0 10px rgb(255, 153, 0);
 }
 .bg > .navBar-link {
   color: inherit !important;
@@ -117,7 +118,7 @@ export default defineComponent({
   text-decoration: none;
 }
 .bar{
-  background: linear-gradient(90deg, rgba(251,146,51,1) 0%, rgba(252,181,49,1) 40%, rgba(254,209,50,1) 100%);
+  background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1) 40%, rgba(254,209,50,1) 100%);
   margin-top: 3px;
   height: 6px;
   width:50px;
@@ -130,13 +131,6 @@ background: white;
   opacity: 0;
 }
 
-.navBar-logo{
-  font-family: 'Archivo Black';
-  font-size: 30px;
-  z-index: 2;
-  margin-top: 10px;
-  margin-left: 40px;
-}
 
 
 .navBar-item {
