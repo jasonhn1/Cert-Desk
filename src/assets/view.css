@@ -52,9 +52,19 @@
 
 .image-location{
     position: relative;
-    width: 14vh;
-    height: 14vh;
+   width: 100px;
+   height: 100px;
 }
+
+@media screen and (max-width:500px){
+
+    .image-location{
+        position: relative;
+        width: 11vh;
+        height: 11vh;
+    }
+}
+
   
 .item-left{
     top: 5vh;

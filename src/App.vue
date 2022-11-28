@@ -1,6 +1,6 @@
 <script lang="ts">
 
-import { defineComponent,ref } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'App',
@@ -16,13 +16,17 @@ export default defineComponent({
       mobile:false,
       mobileNav:false,
       windowWidth:1000,
+      mobileButton:false,
     }
   },
   methods: {
     toggleMobileNav() {
       this.mobileNav = !this.mobileNav;
     },
+    mobileButtonClick(){
 
+    }
+    ,
     checkScreenSize(){
       this.windowWidth = window.innerWidth;
       if(this.windowWidth <= 950){
@@ -51,7 +55,7 @@ export default defineComponent({
 <template>
   <div class="p-relative">
     <nav :class="['navBar', 'fixed', {'bg': scrollPosition > 50}]">
-    <div class="cert-logo">Certifi.edu</div>
+    <div class="cert-logo">Certitude</div>
     <div class="rectangle"></div> 
 
       <div class="navBar-container">
@@ -60,12 +64,10 @@ export default defineComponent({
             <div class="bar-holder"></div>
           </li>
           <li class="navBar-item" @mouseover="hover = true" @mouseleave="hover = false">
-            <a href="/" class="navBar-link">Home
-            </a>
+            <a href="/" class="navBar-link">Home</a>
           <Transition>
           <div v-if="hover" class="bar"></div>
           </Transition>
-          
           </li>
 
           <li class="navBar-item" @mouseover="hover1 = true" @mouseleave="hover1 = false">
@@ -101,17 +103,15 @@ export default defineComponent({
         </ul>
 
         <div class="hamburger">
-          <el-icon @click="toggleMobileNav" v-show="mobile" :class="{'hamburger-active':mobileNav}"><Menu /></el-icon>
+          <button @click="toggleMobileNav" v-show="mobile" class="nav-button"><el-icon :class="mobileNav ?'hamburger-active': 'hamburger-not-active'  "><Menu/></el-icon></button>
         </div>
 
-        <Transition name="mobile-nav">
-
- 
-          <ul v-show="mobileNav" class="dropdown-nav">
+        <Transition name="mobile-nav" >
+          <ul v-show="mobileNav" :class="mobileNav ?'dropdown-nav': 'dropdown-nav-not-active'">
             <li class="navBar-item top-link">
               <div class="bar-holder"></div>
             </li>
-            <li class="navBar-item" @mouseover="hover = true" @mouseleave="hover = false">
+            <li class="navBar-item" @mouseover="hover = true" @mouseleave="hover = false"  @click="toggleMobileNav">
               <a href="/" class="navBar-link">Home
               </a>
             <Transition>
@@ -120,31 +120,31 @@ export default defineComponent({
             
             </li>
   
-            <li class="navBar-item" @mouseover="hover1 = true" @mouseleave="hover1 = false">
+            <li class="navBar-item" @mouseover="hover1 = true" @mouseleave="hover1 = false"  @click="toggleMobileNav">
               <a href="/#about" class="navBar-link">About</a>
               <Transition>
               <div v-if="hover1" class="bar"></div>
             </Transition>
             </li>
-            <li class="navBar-item" @mouseover="hover2 = true" @mouseleave="hover2 = false">
+            <li class="navBar-item" @mouseover="hover2 = true" @mouseleave="hover2 = false"  @click="toggleMobileNav">
               <a href="/#contact" class="navBar-link">Contact</a>
               <Transition>
             <div v-if="hover2" class="bar"></div>
             </Transition>
             </li>
-            <li class="navBar-item" @mouseover="hover3 = true" @mouseleave="hover3 = false">
+            <li class="navBar-item" @mouseover="hover3 = true" @mouseleave="hover3 = false"  @click="toggleMobileNav">
               <a href="/student" class="navBar-link">Student</a>
               <Transition>
             <div v-if="hover3" class="bar"></div>
             </Transition>
             </li>
-            <li class="navBar-item" @mouseover="hover4 = true" @mouseleave="hover4 = false" >
+            <li class="navBar-item" @mouseover="hover4 = true" @mouseleave="hover4 = false"  @click="toggleMobileNav">
               <a href="/business" class="navBar-link">Business</a>
               <Transition>
             <div v-if="hover4" class="bar"></div>
             </Transition>
             </li>
-            <li class="navBar-item" @mouseover="hover5 = true" @mouseleave="hover5 = false">
+            <li class="navBar-item" @mouseover="hover5 = true" @mouseleave="hover5 = false"  @click="toggleMobileNav">
               <a href="/institution" class="navBar-link">Institution</a>
               <Transition>
             <div v-if="hover5" class="bar"></div>
@@ -177,11 +177,26 @@ nav{
   width: 100%;
   max-width: 250px;
   height: 100%;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   top:0;
   left:0;
   border-radius: 10px;
-  animation-duration: 2s;
+  animation: fade-in 1.1s ease-in;
+}
+
+
+.dropdown-nav-not-active{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  top:0;
+  left:0;
+  border-radius: 10px;
+  animation: fade-out 1s ease-out;
 }
 
 .top-link{
@@ -218,11 +233,17 @@ nav{
   color: inherit;
   text-decoration: none;
 }
+
+.nav-button{
+  background: transparent;
+  border: 0;
+}
 .bar{
   background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1) 40%, rgba(254,209,50,1) 100%);
   margin-top: 3px;
   height: 6px;
   width:50px;
+  position: fixed;
 }
 .bar-holder{
 background: white;
@@ -247,7 +268,11 @@ el-icon{
   transform: rotate(45deg);
 }
 
-
+.hamburger-not-active{
+  transition: .5s ease all;
+  background: transparent;
+  transform: rotate(90deg);
+}
 .navBar-item {
   font-size: 16px;
   padding: .75em 15px;
@@ -291,4 +316,30 @@ el-icon{
 .v-leave-to {
   width: 0px;
 }
+
+
+@keyframes fade-in {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(3%);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    transform: translateX(3%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+
+
 </style>
+<!-- translateX(0%); -->

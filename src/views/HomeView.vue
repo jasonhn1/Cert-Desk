@@ -7,12 +7,14 @@ export default defineComponent({
     return {
       scrollPosition: null as unknown as number,
       dialogVisible: false,
+
     }
   },
   methods: {
     studentClick() {
       window.location.replace("https://m.certitude-demo.delta.games");
-    },
+    }
+    ,
     handleClose(done: () => void) {
       ElMessageBox.confirm('Are you sure to close this dialog?')
         .then(() => {
@@ -35,9 +37,7 @@ export default defineComponent({
       <el-row>
         <el-col>
           <div class="wrapper p-relative overall-content">
-            
             <div class="content text-cert">
-              
               <h1 class="text-wrapper">Certitude is <span class="seam">Seamless</span> </h1>
               <p class="intro-text">
                 Our revolutionary education verification
@@ -48,9 +48,9 @@ export default defineComponent({
                 
                 <el-button class="bgradient" @click="studentClick" round>I am a Student</el-button> -->
                 
-                <button class="student-btn">Student <el-icon><CircleCheckFilled /></el-icon></button>
+                <button class="student-btn" @click="studentClick">Student<el-icon><CircleCheckFilled /></el-icon></button>
                 <br/>
-                <button class="recruiter">Recruiter <el-icon><Avatar /></el-icon></button>
+                <button class="recruiter" @click="dialogVisible = true">Recruiter <el-icon><Avatar /></el-icon></button>
                 <br/>
 
                 <!-- <button class="student">I am a Student <el-icon><Notebook /></el-icon></button> -->
@@ -81,6 +81,7 @@ export default defineComponent({
                 </div>
               </div>
               </el-card>
+            
           </div>
         </el-col>
       </el-row>
@@ -98,26 +99,21 @@ export default defineComponent({
               <h1 class="about-us">About Us</h1>
 
               <el-card class="about-card">
-                <el-container>
+                <el-container >
                   <el-aside width="200px"><img class = "coo-img" src="../assets/coo.PNG"/> </el-aside>
                   <el-main class="coo-spacing subtitle">Rishabh Harish <div class="no-inherit">COO</div></el-main>
+                 
                   
+                </el-container>
+              </el-card>
+
+              <el-card class="about-card2">
+                <el-container>
+
                   <el-aside width="200px"><img class = "cto-img" src="../assets/cto.PNG"/> </el-aside>
                   <el-main class="cto-spacing subtitle">Bobby Missirian <div class="no-inherit">CTO</div></el-main>
                 </el-container>
               </el-card>
-              <!-- <el-card class="about-card">
-               <div class ="coo-spacing">
-                <img class = "coo-img" src="../assets/coo.PNG"/> 
-                   <div class = "subtitle">Rishabh Harish</div>
-                   <div>COO</div>
-                </div>
-                <div class="cto-spacing">
-                <img class = "cto-img" src="../assets/cto.PNG"/> 
-                <div class = "subtitle">Bobby Missirian</div>
-                <div>CTO</div>
-              </div>
-              </el-card> -->
 
               <p>
                 We are a team of students and professionals who are passionate about education and technology. We
@@ -141,10 +137,10 @@ export default defineComponent({
             <div class="secondary-content">
               <h1 class ="contact-us">Contact Us!</h1>
               <el-form size="large" label-width="120px" class="demo-dynamic contact-form">
-                <el-form-item prop="email" label="Email">
+                <el-form-item prop="email" label="Email" class="email-area">
                   <el-input />
                 </el-form-item>
-                <el-form-item label="Message" prop="desc">
+                <el-form-item label="Message" prop="desc" class="message-area">
                   <el-input type="textarea" rows="8" />
                 </el-form-item>
                 <el-form-item>
@@ -188,13 +184,7 @@ export default defineComponent({
   height: 400px;
 }
 
-.wrap{
-  margin-top: 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 220%;
-}
+
 .container {
   max-width: 1350px;
   width: 100%;
@@ -202,14 +192,11 @@ export default defineComponent({
   overflow-y: hidden;
 }
 .about-us{
+  margin-top: 70px;
   font-size: 45px;
 }
 
-.contact-us{
-  margin-top: 80px;
-  font-size: 45px;
-  margin-left: 50px;
-}
+
 .subtitle{
 
 font-family: 'Archivo Black';
@@ -232,9 +219,7 @@ color: rgb(161, 161, 161);
   background-position: 50%;
   overflow: hidden; */
 }
-.text-wrapper{
- font-size: 50px;
-}
+
 .coo-spacing{
 margin-left: -100px;
 
@@ -246,27 +231,7 @@ margin-left: -100px;
   }
 
 
-.recruiter{
-  border: 3px;
-  width: 160px;
-  height: 60px;
-  font-family:'Archivo Black';
-  font-size: 20px;
-  color: black;
-  border-radius: 5px;
-  margin-top: 20px;
-  padding-top: 0px;
-  padding-left:9px;
-  padding-right:2px;
-  background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1)50%, rgba(254,209,50,1) 100%);
-  box-shadow: 10px 10px 0px 1px rgb(0, 0, 0);
-  border: 3px solid rgb(0, 0, 0);
-  transition: transform 250ms;
-}
 
-.recruiter:hover{
-  transform: translateX(10px);
-}
 .seam{
   background: linear-gradient(81deg, rgba(255,106,0,1) 0%,  rgba(255,209,0,1) 20%,rgba(255,241,78,1) 100%);
   -webkit-background-clip: text;
@@ -284,20 +249,8 @@ margin-left: -100px;
 .intro-text{
   margin-top: 10px;
 }
-.worker{
-  display: inline;
-  width:500px;
-  margin-top: -40px;
-  height: 200px;
-  margin-left: 300px;
-  z-index: 11;
-}
-.about-card{
-  width: 515px;
-  height: 150px;
-  padding: 10px;
-  margin-bottom: 60px;
-}
+
+
 .coo-img{
 width: 100px;
 height: 100px;
@@ -354,6 +307,8 @@ border-radius: 60%;
 
 
 
+
+
 @keyframes bg-animation {
   0%{
     background-position: left;
@@ -401,22 +356,15 @@ border-radius: 60%;
   margin-top: 200px;
 }
 
-.secondary-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-}
 
-.card-box{
+/* .card-box{
   height: 200px;
   width: 1200px;
   margin-top: 150px;
   margin-left: -300px;
   margin-right: 100px;
   margin-bottom: 200px;
-}
+} */
 .text-cert{
   margin-top: -250px;
   margin-left: 70px;
