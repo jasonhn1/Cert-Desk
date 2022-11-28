@@ -2,6 +2,9 @@
 .socials{
     width: 5vh;
     margin-left: auto;
+    float: right;
+    margin-left: 20px;
+    margin-top: -2px;
 }
 
 .logo{
@@ -27,20 +30,14 @@
     width: 40vh;
 }
   
-.header{
-    text-align: center;
-    font-weight: bold;
-    font-size: large;
-    position: relative;
-    left: 25vh;
-}
+
   
 .student {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #D3D3D3;
+    
 }
 .info-display{
     background-color: white;
@@ -72,18 +69,9 @@
     font-weight: bolder;
 }
 
-.img-right{
-    left: 50vh;
-    bottom: 7vh;
-}
-  
-.img-left{
-    bottom: 5vh;
-    left: 2vh;
-}
   
 .footer {
-    background: darkslategray;
+    background: rgb(255, 119, 0);
     padding: 1em;
     color: white;
     text-align: center;

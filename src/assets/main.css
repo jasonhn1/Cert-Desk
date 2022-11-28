@@ -77,3 +77,23 @@ header {
   left: 0;
   z-index: 69;
 }
+
+.background{
+  background-image: url('./certitude_bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-image: url('@/assets/splashbanner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  overflow: hidden; */
+}
+
+.sidenav {
+  position: fixed;
+  left: 0;
+  height:100vh;
+  z-index:1000;
+  background:lightgray;
+  color:black;
+}

@@ -1,13 +1,17 @@
 <script lang="ts">
-import { dataType } from 'element-plus/es/components/table-v2/src/common';
-import { defineComponent } from 'vue';
+
+import { defineComponent,ref } from 'vue';
+
+
+
 export default defineComponent({
   name: 'App',
+
   data() {
     return {
       scrollPosition: null as unknown as number,
       hover:false,
-      hover1:false,
+      hover1:false, 
       hover2:false,
       hover3:false,
       hover4:false,
@@ -30,9 +34,11 @@ export default defineComponent({
 <template>
   <div class="p-relative">
     <nav :class="['navBar', 'fixed', {'bg': scrollPosition > 50}]">
-      <div class="cert-logo">Certifi.edu</div>
-    <div class="rectangle"></div>
-      <div class="navBar-container">
+    <div class="cert-logo">Certifi.edu</div>
+      
+    <div class="rectangle"></div> 
+
+      <!-- <div class="navBar-container">
         <ul class="navBar-list">
           <li class="navBar-item">
             <div class="bar-holder"></div>
@@ -77,7 +83,9 @@ export default defineComponent({
           </Transition>
           </li>
         </ul>
-      </div>
+      </div> -->
+
+
     </nav>
   </div>
 

@@ -61,7 +61,7 @@ export default defineComponent({
               <el-card class=" card-box">
                 <div class="card-horizontal">
                 <div class="text center item">
-                  <el-icon :size="30" color="#fcb531" class="icon-grad no-inherit">
+                  <el-icon :size="30" color="#fcb531" class="icon-grad">
                     <Pointer />
                   </el-icon>
                   <h2>One-Click Check</h2>
@@ -92,8 +92,33 @@ export default defineComponent({
       <el-row>
         <el-col :span="12" style="padding-left:50px">
           <div class="wrapper p-relative">
-            <div class="secondary-content">
-              <h1>About Us</h1>
+            
+          <div class="wrap">
+            <div class="secondary-content"> 
+              <h1 class="about-us">About Us</h1>
+
+              <el-card class="about-card">
+                <el-container>
+                  <el-aside width="200px"><img class = "coo-img" src="../assets/coo.PNG"/> </el-aside>
+                  <el-main class="coo-spacing subtitle">Rishabh Harish <div class="no-inherit">COO</div></el-main>
+                  
+                  <el-aside width="200px"><img class = "cto-img" src="../assets/cto.PNG"/> </el-aside>
+                  <el-main class="cto-spacing subtitle">Bobby Missirian <div class="no-inherit">CTO</div></el-main>
+                </el-container>
+              </el-card>
+              <!-- <el-card class="about-card">
+               <div class ="coo-spacing">
+                <img class = "coo-img" src="../assets/coo.PNG"/> 
+                   <div class = "subtitle">Rishabh Harish</div>
+                   <div>COO</div>
+                </div>
+                <div class="cto-spacing">
+                <img class = "cto-img" src="../assets/cto.PNG"/> 
+                <div class = "subtitle">Bobby Missirian</div>
+                <div>CTO</div>
+              </div>
+              </el-card> -->
+
               <p>
                 We are a team of students and professionals who are passionate about education and technology. We
                 believe that education is the key to a better future and that technology can help us achieve that
@@ -101,6 +126,8 @@ export default defineComponent({
                 other's credentials in a seamless and secure way.
               </p>
             </div>
+            <img class = "about-img" src="../assets/about.png"/> 
+            </div> 
           </div>
         </el-col>
       </el-row>
@@ -112,13 +139,13 @@ export default defineComponent({
         <el-col :span="24">
           <div class="wrapper p-relative">
             <div class="secondary-content">
-              <h2>Contact Us!</h2>
-              <el-form size="large" label-width="120px" class="demo-dynamic">
+              <h1 class ="contact-us">Contact Us!</h1>
+              <el-form size="large" label-width="120px" class="demo-dynamic contact-form">
                 <el-form-item prop="email" label="Email">
                   <el-input />
                 </el-form-item>
                 <el-form-item label="Message" prop="desc">
-                  <el-input type="textarea" rows="15" />
+                  <el-input type="textarea" rows="8" />
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary">Submit</el-button>
@@ -131,11 +158,7 @@ export default defineComponent({
     </div>
   </el-row>
   <el-footer class="footer" height="300">
-    I guess copyright or something can go here<br />
-    should also make this<br />
-    taller<br />
-    with links<br />
-    and stuff
+    Certitude © 2022 Made by Tim Chen, Jeffery Hover, Jason Nguyen, Ben Mueller 
   </el-footer>
   <el-dialog v-model="dialogVisible" title="Employer Auth" width="30%" :before-close="handleClose">
     <span>Authentication options for the employer should be shown here</span>
@@ -152,19 +175,53 @@ export default defineComponent({
 
 <style scoped>
 .footer {
-  background: darkslategray;
+  background: rgb(255, 119, 0);
   padding: 1em;
   color: white;
   text-align: center;
+  border-radius: 1%;
+  font-family: Comfortaa;
 }
 
+.about-img{
+  width:800px;
+  height: 400px;
+}
+
+.wrap{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 220%;
+}
 .container {
   max-width: 1350px;
   width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
 }
+.about-us{
+  font-size: 45px;
+}
 
+.contact-us{
+  margin-top: 80px;
+  font-size: 45px;
+  margin-left: 50px;
+}
+.subtitle{
+
+font-family: 'Archivo Black';
+font-size: 17px;
+overflow-x: hidden;
+}
+.no-inherit{
+font-family: 'Comfortaa' !important;
+margin-top:10px;
+font-size: 15px;
+color: rgb(161, 161, 161);
+}
 .headSplash {
   background-image: url('@/assets/certitude_bg.png');
   background-size: cover;
@@ -175,6 +232,16 @@ export default defineComponent({
   background-position: 50%;
   overflow: hidden; */
 }
+.coo-spacing{
+margin-left: -100px;
+
+}
+
+.cto-spacing{
+  margin-left: -100px;
+
+  }
+
 
 .recruiter{
   border: 3px;
@@ -211,10 +278,7 @@ export default defineComponent({
   animation: bg-animation 10s infinite alternate; 
 }
 
-/*
-  margin-left: 750px;
-  margin-top: -100px;
-*/
+
 .worker{
   display: inline;
   width:500px;
@@ -223,6 +287,25 @@ export default defineComponent({
   margin-left: 300px;
   z-index: 11;
 }
+.about-card{
+  width: 515px;
+  height: 150px;
+  padding: 10px;
+  margin-bottom: 60px;
+}
+.coo-img{
+width: 100px;
+height: 100px;
+border-radius: 60%;
+}
+.cto-img{
+  width: 100px;
+  height: 100px;
+  padding-bottom: 3px;
+  border-radius: 60%;
+}
+
+
 
 .icon-grad{
   background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1) 50%, rgba(254,209,50,1) 100%);
@@ -251,7 +334,9 @@ export default defineComponent({
 .card-horizontal{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
+
 .particles {
   position: absolute;
   left: 10%;
@@ -316,6 +401,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 50%;
 }
 
 .card-box{
