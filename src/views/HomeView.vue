@@ -38,8 +38,8 @@ export default defineComponent({
             
             <div class="content text-cert">
               
-              <h1 class="context">Certitude is <span class="seam">Seamless</span> </h1>
-              <p>
+              <h1 class="text-wrapper">Certitude is <span class="seam">Seamless</span> </h1>
+              <p class="intro-text">
                 Our revolutionary education verification
                 platform is <br/>simple, instant, and secure
               </p>
@@ -232,6 +232,9 @@ color: rgb(161, 161, 161);
   background-position: 50%;
   overflow: hidden; */
 }
+.text-wrapper{
+ font-size: 50px;
+}
 .coo-spacing{
 margin-left: -100px;
 
@@ -278,7 +281,9 @@ margin-left: -100px;
   animation: bg-animation 10s infinite alternate; 
 }
 
-
+.intro-text{
+  margin-top: 10px;
+}
 .worker{
   display: inline;
   width:500px;
@@ -413,8 +418,8 @@ border-radius: 60%;
   margin-bottom: 200px;
 }
 .text-cert{
-  margin-top: -300px;
-  margin-left: 80px;
+  margin-top: -250px;
+  margin-left: 70px;
   margin-right:-200px;
 }
 </style>

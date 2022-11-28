@@ -2,11 +2,8 @@
 
 import { defineComponent,ref } from 'vue';
 
-
-
 export default defineComponent({
   name: 'App',
-
   data() {
     return {
       scrollPosition: null as unknown as number,
@@ -15,13 +12,33 @@ export default defineComponent({
       hover2:false,
       hover3:false,
       hover4:false,
-      hover5:false
+      hover5:false,
+      mobile:false,
+      mobileNav:false,
+      windowWidth:1000,
     }
   },
   methods: {
-    onClick(path: string) {
+    toggleMobileNav() {
+      this.mobileNav = !this.mobileNav;
+    },
 
+    checkScreenSize(){
+      this.windowWidth = window.innerWidth;
+      if(this.windowWidth <= 950){
+        this.mobile = true;
+       
+      }else{
+        this.mobile = false;
+        this.mobileNav = false;
+      }
+
+      return;
     }
+  },
+  created(){
+    window.addEventListener('resize',this.checkScreenSize);
+    this.checkScreenSize();
   },
   mounted() {
     window.addEventListener('scroll', () => {
@@ -35,11 +52,10 @@ export default defineComponent({
   <div class="p-relative">
     <nav :class="['navBar', 'fixed', {'bg': scrollPosition > 50}]">
     <div class="cert-logo">Certifi.edu</div>
-      
     <div class="rectangle"></div> 
 
-      <!-- <div class="navBar-container">
-        <ul class="navBar-list">
+      <div class="navBar-container">
+        <ul v-show="!mobile" class="navBar-list">
           <li class="navBar-item">
             <div class="bar-holder"></div>
           </li>
@@ -83,9 +99,60 @@ export default defineComponent({
           </Transition>
           </li>
         </ul>
-      </div> -->
 
+        <div class="hamburger">
+          <el-icon @click="toggleMobileNav" v-show="mobile" :class="{'hamburger-active':mobileNav}"><Menu /></el-icon>
+        </div>
 
+        <Transition name="mobile-nav">
+
+ 
+          <ul v-show="mobileNav" class="dropdown-nav">
+            <li class="navBar-item top-link">
+              <div class="bar-holder"></div>
+            </li>
+            <li class="navBar-item" @mouseover="hover = true" @mouseleave="hover = false">
+              <a href="/" class="navBar-link">Home
+              </a>
+            <Transition>
+            <div v-if="hover" class="bar"></div>
+            </Transition>
+            
+            </li>
+  
+            <li class="navBar-item" @mouseover="hover1 = true" @mouseleave="hover1 = false">
+              <a href="/#about" class="navBar-link">About</a>
+              <Transition>
+              <div v-if="hover1" class="bar"></div>
+            </Transition>
+            </li>
+            <li class="navBar-item" @mouseover="hover2 = true" @mouseleave="hover2 = false">
+              <a href="/#contact" class="navBar-link">Contact</a>
+              <Transition>
+            <div v-if="hover2" class="bar"></div>
+            </Transition>
+            </li>
+            <li class="navBar-item" @mouseover="hover3 = true" @mouseleave="hover3 = false">
+              <a href="/student" class="navBar-link">Student</a>
+              <Transition>
+            <div v-if="hover3" class="bar"></div>
+            </Transition>
+            </li>
+            <li class="navBar-item" @mouseover="hover4 = true" @mouseleave="hover4 = false" >
+              <a href="/business" class="navBar-link">Business</a>
+              <Transition>
+            <div v-if="hover4" class="bar"></div>
+            </Transition>
+            </li>
+            <li class="navBar-item" @mouseover="hover5 = true" @mouseleave="hover5 = false">
+              <a href="/institution" class="navBar-link">Institution</a>
+              <Transition>
+            <div v-if="hover5" class="bar"></div>
+            </Transition>
+            </li>
+          </ul>
+        </Transition>
+      </div> 
     </nav>
   </div>
 
@@ -94,6 +161,32 @@ export default defineComponent({
 
 <style scoped>
 
+nav{
+  display: flex;
+  flex-direction: row;
+  transition: 0.5s ease all;
+  @media (min-width:1140px){
+    max-width:1140px
+  } 
+}
+
+.dropdown-nav{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  background-color: #fff;
+  top:0;
+  left:0;
+  border-radius: 10px;
+  animation-duration: 2s;
+}
+
+.top-link{
+  margin-top: 20px;
+}
 .rectangle{
   position: absolute;
   width: 200px;
@@ -138,7 +231,21 @@ background: white;
   width:50px;
   opacity: 0;
 }
+.hamburger{
+  color:black;
+  margin-right: 20px;
+  font-size: 35px;
+}
 
+el-icon{
+    cursor: pointer;
+}
+
+.hamburger-active{
+  transition: .5s ease all;
+  background: linear-gradient(90deg, rgb(255, 119, 0) 0%, rgba(252,181,49,1) 40%, rgba(254,209,50,1) 100%);
+  transform: rotate(45deg);
+}
 
 
 .navBar-item {
